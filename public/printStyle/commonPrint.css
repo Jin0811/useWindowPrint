@@ -1,0 +1,58 @@
+/*
+  打印相关公共样式
+
+  .page-break 添加此样式可以手动进行换页，注意被换页的元素尽量不要被Space组件包裹，否则可能无法进行分页
+*/
+
+@media print {
+  .page-break {
+    page-break-inside: avoid !important;
+  }
+}
+
+/* 处理单选未勾选的问题 */
+.ant-radio-checked {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+
+.ant-radio-checked .dot {
+  display: inline-block;
+  border: 4px solid #ccc;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+/*  处理多选框未勾选的问题 */
+.ant-checkbox-checked {
+  top: 0px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  color: #ccc;
+  text-align: center;
+}
+
+/* 处理input当中的文本过长无法显示的问题 */
+.print-input-container {
+  padding: 4px 11px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  min-height: 32px;
+  word-break: break-all;
+}
+
+/* 处理textarea文字显示不全的问题 */
+.print-textarea-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  min-height: 32px;
+  word-break: break-all;
+  width: 100%;
+}

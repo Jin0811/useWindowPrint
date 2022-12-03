@@ -16,7 +16,7 @@
   - 遇到的问题：
     - 偶发性问题，内容很长导致了换页时，文字有可能会被截断，一个字和上下在两张纸上面
     - 偶发性问题，打印时，Antd的表头出现了多个，导致了与表格内容重叠，不太清楚是不是项目当中其他的样式影响，导致了双表头重叠
-    - 在项目当中的某个机器上不支持，兼容性可以根据自身项目的实际情况进行考虑
+    - 项目当中的某个机器上不支持，兼容性可以根据自身项目的实际情况进行考虑
 
 - [print-js](https://www.npmjs.com/package/print-js)
   - 是一个PC端的打印库，各种框架都是支持的
@@ -37,6 +37,7 @@
 
 ## 3 useWindowPrint 使用示例
 ```js
+// 自定义HOOK
 const [isPrint, beginPrint] = useWindowPrint({
   contentId: "PrintDemoId",
   margin: "5mm", // 打印的边距
@@ -55,6 +56,11 @@ const [isPrint, beginPrint] = useWindowPrint({
     resolve();
   }),
 });
+
+// 打印
+const handlePrint = () => {
+  beginPrint();
+};
 ```
 
 ## 4 useWindowPrint 打印效果预览
@@ -84,6 +90,6 @@ const [isPrint, beginPrint] = useWindowPrint({
 - 将 `iframe` 添加到 `document.body` 当中
 
 ## 6 useWindowPrint 源码和示例代码
-- `useWindowPrint.js：`src\hooks\useWindowPrint.js
-- `PrintDemo.jsx：`src\views\PrintDemo.jsx
-- `printStyle：`public\printStyle
+- `useWindowPrint.js：` src\hooks\useWindowPrint.js
+- `PrintDemo.jsx：` src\views\PrintDemo.jsx
+- `printStyle：` public\printStyle

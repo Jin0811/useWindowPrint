@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import {
   Button, Row, Col, Form, Input, Checkbox, Radio,
-  DatePicker, Select, Typography, Table, Space, Card,
+  DatePicker, Select, Typography, Table, Card,
   Descriptions, List, Spin
 } from "antd";
 import useWindowPrint from "../hooks/useWindowPrint";

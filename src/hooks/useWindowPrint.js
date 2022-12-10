@@ -9,6 +9,7 @@ const printContainerId = "UNIQUE_PRINT_CONTAINER";
  * @param {Object}
  * - @param {String} contentId 打印区域的id
  * - @param {String} margin 打印时的纸张边距，例如：5mm，代表边距为5mm，语法与CSS的margin一致，支持分别设置四个方向的边距
+ * - @param {String} direction 打印时的纸张方向 (portrait 纵向 || landscape 横向)，如果不传递，则默认为纵向
  * - @param {Number} zoom 打印时的页面缩放比例，例如：0.7，代表页面缩放为70%，可以用于横向滚动表格内容排版的美化
  * - @param {Function} onBeforePrint 打印之前的回调，可以进行自身页面上的状态更新，如展开树形表格、处理元素的展示效果等
  * - @param {Function} onBeforePrintContent 打印DOM结构之前的回调，可以依据参数，来自行调整DOM结构
@@ -27,6 +28,7 @@ const printContainerId = "UNIQUE_PRINT_CONTAINER";
  *    4.2 一般情况下，不需要进行页面的缩放，除非涉及到列很多的横向滚动表格，不缩放的话，表格的内容会被挤在一起，排版不美观
  * 5、如果你的项目当中，使用的并不是Antd的框架，或者版本不一致，或者没有使用框架，可以自行更换框架样式文件或去除框架样式文件，此Demo的Antd版本为：4.23.4
  * 6、Vue项目、原生JS项目的原理类似，可以自行进行封装
+ * 7、direction可以指定打印时的纸张方向，一旦指定，用户将不能再自己选择打印方向
  * 
  * 问题记录：
  * 1、Tab组件打印时，即使切换到了第二个Tab页签，但是打印时，永远都是第一个Tab页签内的内容？
@@ -39,7 +41,7 @@ const printContainerId = "UNIQUE_PRINT_CONTAINER";
 
 const useWindowPrint = (options) => {
   // Props
-  const { contentId, margin = "5mm", zoom, onBeforePrint, onBeforePrintContent, onAfterPrint } = options;
+  const { contentId, margin = "5mm", direction, zoom, onBeforePrint, onBeforePrintContent, onAfterPrint } = options;
 
   // State
   const [isPrint, setIsPrint] = useState(false);
@@ -123,6 +125,13 @@ const useWindowPrint = (options) => {
     if (margin) {
       const styleDom = document.createElement("STYLE");
       styleDom.innerHTML = `@page { margin: ${margin}; }`;
+      iframe.contentWindow.document.head.appendChild(styleDom);
+    }
+
+    // 处理打印时的纸张方向
+    if (direction) {
+      const styleDom = document.createElement("STYLE");
+      styleDom.innerHTML = `@page { size: ${direction}; }`;
       iframe.contentWindow.document.head.appendChild(styleDom);
     }
 

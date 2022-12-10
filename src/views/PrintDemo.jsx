@@ -18,6 +18,7 @@ const PrintDemo = () => {
   const [isPrint, beginPrint] = useWindowPrint({
     contentId: "PrintDemoId",
     margin: "5mm", // 打印的边距
+    // direction: "landscape", // 打印时的纸张方向，可选值： portrait 纵向 || landscape 横向
     zoom: 1, // 打印时的缩放比例，仅支持chrome和IE，火狐不支持
     // 打印之前的回调，可以处理State
     onBeforePrint: () => new Promise((resolve) => {

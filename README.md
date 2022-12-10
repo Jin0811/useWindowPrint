@@ -93,3 +93,7 @@ const handlePrint = () => {
 - `useWindowPrint.js：` src\hooks\useWindowPrint.js
 - `PrintDemo.jsx：` src\views\PrintDemo.jsx
 - `printStyle：` public\printStyle
+
+## 7 打印样式参考的相关博客
+- [浏览器 window.print 自定义 打印规格](https://www.jianshu.com/p/a6a052918ae4)
+- [通过CSS控制window.print打印样式浅析](https://blog.51cto.com/u_15127663/4154700)

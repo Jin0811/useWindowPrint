@@ -5,7 +5,7 @@ import {
   Descriptions, List, Spin
 } from "antd";
 import useWindowPrint from "../hooks/useWindowPrint";
-import { commonOptions, listData, columns, generateTableData } from "../options/printDemoOptions";
+import { commonOptions, listData, columns, generateTableData } from "../options/PrintDemoOptions";
 import moment from "moment";
 
 const { TextArea } = Input;
